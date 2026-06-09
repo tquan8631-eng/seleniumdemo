@@ -39,7 +39,7 @@ public class LoginTest {
         driver.findElement(By.tagName("button")).click();
         Thread.sleep(2000);
         String error = driver.findElement(By.className("oxd-alert-content-text")).getText();
-        Assert.assertTrue(error.contains("Invalid credentials"));
+        Assert.assertTrue(error.contains("ABCXYZ"));
     }
 
     @AfterMethod
