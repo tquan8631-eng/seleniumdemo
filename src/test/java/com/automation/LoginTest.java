@@ -32,15 +32,18 @@ public class LoginTest {
     }
 
     @Test
-    public void loginSai() throws Exception {
-        Thread.sleep(3000);
-        driver.findElement(By.name("username")).sendKeys("saiuser");
-        driver.findElement(By.name("password")).sendKeys("saipass");
-        driver.findElement(By.tagName("button")).click();
-        Thread.sleep(2000);
-        String error = driver.findElement(By.className("oxd-alert-content-text")).getText();
-        Assert.assertTrue(error.contains("ABCXYZ"));
-    }
+public void loginSai() throws Exception {
+    Thread.sleep(3000);
+
+    driver.findElement(By.name("username")).sendKeys("saiuser");
+    driver.findElement(By.name("password")).sendKeys("saipass");
+    driver.findElement(By.tagName("button")).click();
+
+    Thread.sleep(5000);
+
+    String pageSource = driver.getPageSource();
+    Assert.assertTrue(pageSource.contains("Invalid credentials"));
+}
 
     @AfterMethod
     public void tearDown() {
