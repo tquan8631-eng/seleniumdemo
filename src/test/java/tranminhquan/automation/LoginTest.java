@@ -54,7 +54,7 @@ public class LoginTest {
         String pageSource = driver.getPageSource();
 
         // Cố tình FAIL
-        Assert.assertTrue(pageSource.contains("Invalid credentials"));
+        Assert.assertTrue(pageSource.contains("ADGSFS"));
     }
 
     @AfterMethod
