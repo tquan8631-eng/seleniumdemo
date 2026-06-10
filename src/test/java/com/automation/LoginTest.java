@@ -42,7 +42,7 @@ public void loginSai() throws Exception {
     Thread.sleep(5000);
 
     String pageSource = driver.getPageSource();
-    Assert.assertTrue(pageSource.contains("Invalid credentials"));
+    Assert.assertTrue(pageSource.contains("ABCXYZ"));
 }
 
     @AfterMethod
