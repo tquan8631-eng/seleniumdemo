@@ -8,11 +8,13 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class LoginTest {
+
     WebDriver driver;
 
     @BeforeMethod
     public void setup() {
         ChromeOptions options = new ChromeOptions();
+
         options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
@@ -21,32 +23,44 @@ public class LoginTest {
         driver.get("https://opensource-demo.orangehrmlive.com/");
     }
 
-    @Test
+    @Test(priority = 1)
     public void loginDung() throws Exception {
+
         Thread.sleep(3000);
+
         driver.findElement(By.name("username")).sendKeys("Admin");
         driver.findElement(By.name("password")).sendKeys("admin123");
+
         driver.findElement(By.tagName("button")).click();
+
         Thread.sleep(3000);
-        Assert.assertTrue(driver.getCurrentUrl().contains("dashboard"));
+
+        Assert.assertTrue(
+                driver.getCurrentUrl().contains("dashboard"));
     }
 
-    @Test
-public void loginSai() throws Exception {
-    Thread.sleep(3000);
+    @Test(priority = 2)
+    public void loginSai() throws Exception {
 
-    driver.findElement(By.name("username")).sendKeys("saiuser");
-    driver.findElement(By.name("password")).sendKeys("saipass");
-    driver.findElement(By.tagName("button")).click();
+        Thread.sleep(3000);
 
-    Thread.sleep(5000);
+        driver.findElement(By.name("username")).sendKeys("saiuser");
+        driver.findElement(By.name("password")).sendKeys("saipass");
 
-    String pageSource = driver.getPageSource();
-    Assert.assertTrue(pageSource.contains("ABCXYZ"));
-}
+        driver.findElement(By.tagName("button")).click();
+
+        Thread.sleep(5000);
+
+        String pageSource = driver.getPageSource();
+
+        // Cố tình FAIL
+        Assert.assertTrue(pageSource.contains("ABCXYZ"));
+    }
 
     @AfterMethod
     public void tearDown() {
-        if (driver != null) driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
