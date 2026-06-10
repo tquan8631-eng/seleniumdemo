@@ -1,0 +1,21 @@
+name: Login Dung
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  login-dung:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Run Login Dung
+        run: mvn test -Dtest=LoginTest#loginDung
