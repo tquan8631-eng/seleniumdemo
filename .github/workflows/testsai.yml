@@ -18,4 +18,4 @@ jobs:
           java-version: 21
 
       - name: Run Login Sai
-        run: mvn test -Dtest=LoginTest#loginSai
+        run: mvn test -Dtest=com.automation.LoginTest#loginSai
