@@ -1,4 +1,4 @@
-package com.automation;
+package tranminhquan.automation;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -54,7 +54,7 @@ public class LoginTest {
         String pageSource = driver.getPageSource();
 
         // Cố tình FAIL
-        Assert.assertTrue(pageSource.contains("ABCXYZ"));
+        Assert.assertTrue(pageSource.contains("Invalid credentials"));
     }
 
     @AfterMethod
